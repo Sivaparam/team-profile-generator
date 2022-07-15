@@ -1,15 +1,20 @@
+//packages
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { exit } = require('process');
 
+//import class and quesitons
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
 
-let fileName = 'team_profile.txt';
+//variable to hold name of file
+const fileName = 'team_profile.txt';
 
+//Array variable to hold employee data
+let empData = [];
 
-
+//Inquirer for menu option
 const menu = [
     {
         type: 'rawlist',
@@ -31,17 +36,26 @@ function buildTeam() {
 
 };
 
+//function that gathers manager information and stores in an array. Invokes dusplaymenu function
 function getMangerInfo() {
     console.log('Lets gather Manager Information');
     inquirer.prompt(Manager.getManagerInfo)
         .then(data => {
-            console.log('Gather Managers details!');
+            console.log(data);
+const {name, id, email, officeNum} = data;
+const manager = new Manager(name, id, email, officeNum);
+empData.push(manager);
+console.log(manager);
+
          
-            fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-            err ? console.log(err) : console.log('success on manager details!')
-            );
-            displayMenu();
+            // fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
+            // err ? console.log(err) : console.log('success on manager details!')
+            // );
         })
+
+        .then(displayMenu())
+            //displayMenu();
+       
         .catch(error => {
             console.log(`Error Occurred ${error}`);
         })
