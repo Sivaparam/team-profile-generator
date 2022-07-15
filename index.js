@@ -4,12 +4,14 @@ const inquirer = require('inquirer');
 const { exit } = require('process');
 
 //import class and quesitons
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern');
-const Manager = require('./lib/manager');
+const {Engineer, engineerPrompts} = require('./lib/engineer');
+const {Intern, internPrompts} = require('./lib/intern');
+const {Manager, managerPromts} = require('./lib/manager');
 
 //variable to hold name of file
-const fileName = 'team_profile.txt';
+const fileName = 'index.html';
+const {generateHTML} = require('./src/generateHTML');
+const fileName1 = 'data.txt';
 
 //Array variable to hold employee data
 let empData = [];
@@ -19,49 +21,16 @@ const menu = [
     {
         type: 'rawlist',
         name: 'teamMember',
-        message: 'Choose to add Team Members(opt 1 or 2) or Finish building team(opt 3)',
+        message: 'Choose from following to add/finsih building team:',
         choices: ['Engineer', 'Intern', 'Finish'],
     },
 
 ];
 
-
-function buildTeam() {
-
-    console.log('Welcome to Team Profile Generator Application');
-
-    getMangerInfo();
-
-    //console.log('Team Profile generator successfully!');
-
-};
-
-//function that gathers manager information and stores in an array. Invokes dusplaymenu function
-function getMangerInfo() {
-    console.log('Lets gather Manager Information');
-    inquirer.prompt(Manager.getManagerInfo)
-        .then(data => {
-            console.log(data);
-const {name, id, email, officeNum} = data;
-const manager = new Manager(name, id, email, officeNum);
-empData.push(manager);
-console.log(manager);
-
-         
-            // fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-            // err ? console.log(err) : console.log('success on manager details!')
-            // );
-        })
-
-        .then(displayMenu())
-            //displayMenu();
-       
-        .catch(error => {
-            console.log(`Error Occurred ${error}`);
-        })
-};
+getMangerInfo();
 
 function displayMenu() {
+
     console.log('Display Options to add team members/finish team building')
     inquirer.prompt(menu)
         .then(data => {
@@ -73,40 +42,74 @@ function displayMenu() {
                     getInternInfo();
                     break;
                 case "Finish":
+                    generateFile();
                     break;
             }
         })
         .catch(error => {
-            console.log(`Error Occurred ${error}`);
+            console.log(`Error Occurred during menu option: ${error}`);
         })
 };
 
-function getEngineerInfo() {
-    inquirer.prompt(Engineer.getEngineerInfo)
-    .then(data => {
-        console.log('Gather Engineer details!');
-        fs.appendFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-        err ? console.log(err) : console.log('success on engineer details!')
-        );
+//function that gathers manager information and stores in an array. Invokes dusplaymenu function
+ async function getMangerInfo() {
+    console.log('Welcome to Team Profile Generator Application');
+    
+   await inquirer.prompt(managerPromts)
+        .then(data => {
+            const manager = new Manager(data.manName, data.manId, data.manEmail, data.manContact);
+            empData.push(manager);
+           var ManagerData = manager.addManagerInfo();
+           fs.writeFile(fileName1, ManagerData, (err) =>
+           err ? console.log(err) : console.log('Team Profile generator successfully!'));
+
+        })
+    
+        .catch(error => {
+            console.log(`Error Occurred ${error}`);
+        })
         displayMenu();
-    })
-    .catch(error => {
-        console.log(`Error Occurred ${error}`);
-    })
+};
+
+async function getEngineerInfo() {
+   await inquirer.prompt(engineerPrompts)
+        .then(data => {
+
+            console.log(data);
+            const engineer = new Engineer(data.engName, data.endID, data.engEmail, data.engGitName);
+            empData.push(engineer);
+            var EngineerData = engineer.addEngineerInfo();
+            fs.appendFile(fileName1, EngineerData, (err) =>
+            err ? console.log(err) : console.log('Team Profile generator successfully!'));
+         
+
+        })
+        .catch(error => {
+            console.log(`Error Occurred in Engineer Info ${error}`);
+        })
+        displayMenu();
+};
+
+async function getInternInfo() {
+   await inquirer.prompt(internPrompts)
+        .then(data => {
+
+            console.log(data);
+            const intern = new Intern(data.intName, data.intID, data.intEmail, data.intSchool);
+            empData.push(intern);
+            var InternData = intern.addInternInfo();
+           fs.appendFile(fileName1, InternData, (err) =>
+           err ? console.log(err) : console.log('Team Profile generator successfully!'));
+         
+        })
+        .catch(error => {
+            console.log(`Error Occurred in Intern Info ${error}`);
+        })
+        displayMenu();
+};
+
+function generateFile() {
+    generateHTML();
+   
 }
 
-function getInternInfo() {
-    inquirer.prompt(Intern.getInternInfo)
-    .then(data => {
-        console.log('Gather Intern details!');
-        fs.appendFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-        err ? console.log(err) : console.log('success on Intern details!')
-        );
-        displayMenu();
-    })
-    .catch(error => {
-        console.log(`Error Occurred ${error}`);
-    })
-}
-
-buildTeam();
