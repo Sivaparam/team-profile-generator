@@ -1,0 +1,21 @@
+{
+	"manName": "Ranjani",
+	"manID": "1",
+	"manEmail": "a.com",
+	"manNum": "12345"
+}{
+	"engName": "parames",
+	"engID": "2",
+	"engEmail": "b.com",
+	"engGitName": "param"
+}{
+	"engName": "mama",
+	"engID": "3",
+	"engEmail": "c.com",
+	"engGitName": "mamas"
+}{
+	"intName": "siva",
+	"intID": "4",
+	"intEmail": "d.com",
+	"engSchName": "GA tech"
+}
