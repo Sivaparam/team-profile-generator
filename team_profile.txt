@@ -1,21 +1,16 @@
 {
 	"manName": "Ranjani",
-	"manID": "1",
+	"manId": "123",
 	"manEmail": "a.com",
-	"manNum": "12345"
+	"manContact": "123456677"
 }{
 	"engName": "parames",
-	"engID": "2",
-	"engEmail": "b.com",
+	"engID": "1234",
+	"engEmail": "d.com",
 	"engGitName": "param"
 }{
-	"engName": "mama",
-	"engID": "3",
-	"engEmail": "c.com",
-	"engGitName": "mamas"
-}{
-	"intName": "siva",
-	"intID": "4",
-	"intEmail": "d.com",
-	"engSchName": "GA tech"
+	"intName": "rakhul",
+	"intID": "34565",
+	"intEmail": "c.vom",
+	"engSchName": "ga tech"
 }

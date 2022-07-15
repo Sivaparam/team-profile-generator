@@ -1,35 +1,14 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { exit } = require('process');
-const Employee = require('./lib/team');
+
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
 
 let fileName = 'team_profile.txt';
 
-const managerInfo = [
-    {
-        type: 'input',
-        name: 'manName',
-        message: 'Enter Managers Name:',
-    },
-    {
-        type: 'input',
-        name: 'manID',
-        message: 'Enter Managers ID:',
-    },
-    {
-        type: 'input',
-        name: 'manEmail',
-        message: 'Enter Managers Email:',
-    },
-    {
-        type: 'input',
-        name: 'manNum',
-        message: 'Enter Managers Office Number:',
-    },
-];
+
 
 const menu = [
     {
@@ -41,51 +20,6 @@ const menu = [
 
 ];
 
-const engineerInfo = [
-    {
-        type: 'input',
-        name: 'engName',
-        message: 'Enter Engineer Name:',
-    },
-    {
-        type: 'input',
-        name: 'engID',
-        message: 'Enter Engineer ID:',
-    },
-    {
-        type: 'input',
-        name: 'engEmail',
-        message: 'Enter Engineer Email:',
-    },
-    {
-        type: 'input',
-        name: 'engGitName',
-        message: 'Enter Engineer Github Username:',
-    },
-];
-
-const internInfo = [
-    {
-        type: 'input',
-        name: 'intName',
-        message: 'Enter Intern Name:',
-    },
-    {
-        type: 'input',
-        name: 'intID',
-        message: 'Enter Intern ID:',
-    },
-    {
-        type: 'input',
-        name: 'intEmail',
-        message: 'Enter Intern Email:',
-    },
-    {
-        type: 'input',
-        name: 'engSchName',
-        message: 'Enter Intern School Name:',
-    },
-];
 
 function buildTeam() {
 
@@ -99,9 +33,10 @@ function buildTeam() {
 
 function getMangerInfo() {
     console.log('Lets gather Manager Information');
-    inquirer.prompt(managerInfo)
+    inquirer.prompt(Manager.getManagerInfo)
         .then(data => {
             console.log('Gather Managers details!');
+         
             fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
             err ? console.log(err) : console.log('success on manager details!')
             );
@@ -133,7 +68,7 @@ function displayMenu() {
 };
 
 function getEngineerInfo() {
-    inquirer.prompt(engineerInfo)
+    inquirer.prompt(Engineer.getEngineerInfo)
     .then(data => {
         console.log('Gather Engineer details!');
         fs.appendFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
@@ -147,7 +82,7 @@ function getEngineerInfo() {
 }
 
 function getInternInfo() {
-    inquirer.prompt(internInfo)
+    inquirer.prompt(Intern.getInternInfo)
     .then(data => {
         console.log('Gather Intern details!');
         fs.appendFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
