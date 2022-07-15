@@ -16,18 +16,20 @@ const fs = require('fs');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <header class="jumbotron">
+        <header class="title">
             <h1>
                 Team Profile
             </h1>
         </header>
         <div class="container">
-            <div class="row">
+           
            ${content}
                 
-            </div>
+           
     
         </div>
     </body>

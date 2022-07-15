@@ -1,15 +1,45 @@
-<div>
+<div class="card">
+        <h3>Ranjani </h3>
+        <h4>Manager</h4>
+        <div class="card-body">
         <ul>
-            <li>manager Name:b </li>
-            <li>manager id:d</li>
-            <li>manager email:y</li>
-            <li>manager contact: j</li>
+            <li>ID:123</li>
+            <li>Email: <a href="mailto: siva.ranjani@gmail.com">siva.ranjani@gmail.com</a></li>
+            <li>Contact: 123445667</li>
         </ul>
-    </div><div>
+        </div>
+    </div><div class="card">
+        <h4>Parames
+        <h5>Engineer</h5>
+        <div class="card-body">
         <ul>
-            <li>manager Name:h </li>
-            <li>manager id:undefined</li>
-            <li>manager email:6</li>
-            <li>manager contact: 7</li>
+            
+            <li>ID:undefined</li>
+            <li>Email: <a href="mailto: param@gmail.com">param@gmail.com</a></li>
+           <li> Github: <a href="https://github.com/param">param </a> </li>
+           
         </ul>
+        </div>
+    </div><div class="card">
+        <h4>Rakhul </h4>
+        <h5>Intern</h5>
+        <div class="card-body">
+        <ul>
+            <li>ID:564</li>
+            <li>Email: <a href="mailto: rak@gmail.com">rak@gmail.com</a></li>
+            <li>Contact: Tech</li>
+        </ul>
+        </div>
+    </div><div class="card">
+        <h4>Siva
+        <h5>Engineer</h5>
+        <div class="card-body">
+        <ul>
+            
+            <li>ID:undefined</li>
+            <li>Email: <a href="mailto: siva@gmail.com">siva@gmail.com</a></li>
+           <li> Github: <a href="https://github.com/siva">siva </a> </li>
+           
+        </ul>
+        </div>
     </div>
