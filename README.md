@@ -42,8 +42,10 @@ npm install --save-dev
 * Future development: Adding validation to user input
 
 * Demo:
+
 ![alt text](./src/Demo1.gif)
-![alt text](./src/Demo.webm)
+
+\n
 
 
 ## Mock-up screen:
@@ -58,6 +60,8 @@ https://github.com/Sivaparam/team-profile-generator
 https://github.com/Sivaparam/team-profile-generator/blob/main/dist/index.html
 
 
+### Demo of Application:
+https://github.com/Sivaparam/team-profile-generator/blob/main/src/Demo.webm
 
 
 

@@ -3,9 +3,9 @@
         <h4>Manager</h4>
         <div class="card-body">
         <ul>
-            <li>ID:123</li>
+            <li>ID:12345</li>
             <li>Email: <a href="mailto: ranjani@gmail.com">ranjani@gmail.com</a></li>
-            <li>Contact: 1233456676</li>
+            <li>Contact: 123456789</li>
         </ul>
         </div>
     </div> 
