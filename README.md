@@ -31,14 +31,13 @@ WHEN user clicks on the GitHUB username, THEN that GitHub profile opens up in a 
 * This applciation uses node.js, Inquirer(to get user input), Jest(unit testing)
 
 * How to Install: 
-npm inti
+npm init
 npm i inquirer@8.2.4
-jest --init
 npm install --save-dev 
 
 * How to Invoke: in command line 'node index.js'
 
-* How to Test: npm-test
+* How to Test: npm test
 
 * Future development: Adding validation to user input
 
