@@ -1,0 +1,11 @@
+
+        <h3>Ranjani </h3>
+        <h4>Manager</h4>
+        <div class="card-body">
+        <ul>
+            <li>ID:123</li>
+            <li>Email: <a href="mailto: ranjani@gmail.com">ranjani@gmail.com</a></li>
+            <li>Contact: 1233456676</li>
+        </ul>
+        </div>
+    </div> 

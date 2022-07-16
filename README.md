@@ -6,8 +6,11 @@
 ## Table of contents
 
 -[Description](#description)
+
 -[Acceptance-Criteria](#acceptance-criteria)
+
 -[How to](#how-to)
+
 -[Mock-up screen](#mock-up-screen)
 
 ## Acceptance Criteria 
@@ -27,7 +30,11 @@ WHEN user clicks on the GitHUB username, THEN that GitHub profile opens up in a 
 
 * This applciation uses node.js, Inquirer(to get user input), Jest(unit testing)
 
-* How to Install: 'npm inti', npm i inquirer@8.2.4, jest --init, npm install --save-dev 
+* How to Install: 
+npm inti
+npm i inquirer@8.2.4
+jest --init
+npm install --save-dev 
 
 * How to Invoke: in command line 'node index.js'
 
@@ -40,10 +47,12 @@ WHEN user clicks on the GitHUB username, THEN that GitHub profile opens up in a 
 
 ![alt text](./src/image1.png)
 
-### Github URL:
+### Github URL: 
+https://github.com/Sivaparam/team-profile-generator
 
 
 ### Sample HTML page generated:
+https://github.com/Sivaparam/team-profile-generator/blob/main/dist/index.html
 
 
 

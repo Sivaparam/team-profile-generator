@@ -9,9 +9,10 @@ const { Intern, internPrompts } = require('./lib/intern');
 const { Manager, managerPromts } = require('./lib/manager');
 
 //variable to hold name of file
-const fileName = './dist/index.html';
 const { generateHTML } = require('./src/generateHTML');
-const dataFile= './src/data.txt';
+const teamFile = './src/team.txt';
+const managerFile = './src/manager.txt';
+const teamComment = '<!--team data-->'
 
 //Inquirer for menu option
 const menu = [
@@ -28,7 +29,7 @@ getMangerInfo();
 
 //display menu option to add a team member or complete generating team buillding
 async function displayMenu() {
-    
+
     await inquirer.prompt(menu)
         .then(data => {
             switch (data.teamMember) {
@@ -55,16 +56,20 @@ async function getMangerInfo() {
     await inquirer.prompt(managerPromts)
         .then(data => {
             const manager = new Manager(data.manName, data.manId, data.manEmail, data.manContact);
-           
+
             var ManagerData = manager.addManagerInfo();
-            fs.writeFile(dataFile, ManagerData, (err) =>
+            fs.writeFile(managerFile, ManagerData, (err) =>
                 err ? console.log(err) : console.log('Manager Data updated to temp file!'));
+          fs.writeFile(teamFile, teamComment, (err) =>
+               err ? console.log(err) : console.log(' '));
 
         })
 
         .catch(error => {
             console.log(`Error Occurred in manager info ${error}`);
         })
+        fs.writeFile(teamFile, teamComment, (err) =>
+        err ? console.log(err) : console.log('Ready for team data!'));
     displayMenu();
 };
 
@@ -73,10 +78,10 @@ async function getEngineerInfo() {
     await inquirer.prompt(engineerPrompts)
         .then(data => {
 
-            const engineer = new Engineer(data.engName, data.endID, data.engEmail, data.engGitName);
-           
+            const engineer = new Engineer(data.engName, data.engID, data.engEmail, data.engGitName);
+
             var EngineerData = engineer.addEngineerInfo();
-            fs.appendFile(dataFile, EngineerData, (err) =>
+            fs.appendFile(teamFile, EngineerData, (err) =>
                 err ? console.log(err) : console.log('Engineer data updated to temp file!'));
 
         })
@@ -95,7 +100,7 @@ async function getInternInfo() {
             const intern = new Intern(data.intName, data.intID, data.intEmail, data.intSchool);
             // empData.push(intern);
             var InternData = intern.addInternInfo();
-            fs.appendFile(dataFile, InternData, (err) =>
+            fs.appendFile(teamFile, InternData, (err) =>
                 err ? console.log(err) : console.log('Intern data updated to temp file!'));
 
         })
